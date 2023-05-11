@@ -10,13 +10,13 @@ This repo holds a relatively small list of PowerShell commands for enumerating t
 ```PowerShell
 hostname
 
-Get-ComputerInfo | select TimeZone,                                               
-    OsLocalDateTime,OsLastBootUpTime,OsUptime,                                                                         
+Get-ComputerInfo | select TimeZone,
+    OsLocalDateTime,OsLastBootUpTime,OsUptime,
     OsNumberOfUsers,CsUserName,OsRegisteredUser,
-    OsOrganization,WindowsRegisteredOrganization,WindowsRegisteredOwner,                                                           
+    OsOrganization,WindowsRegisteredOrganization,WindowsRegisteredOwner,
     OsName,OSDisplayVersion,WindowsSystemRoot,CsChassisBootupState,
-    CsPowerSupplyState,CsThermalState,BiosListOfLanguages,                                                              
-    BiosManufacturer,BiosName,BiosOtherTargetOS,BiosReleaseDate,                                                                  
+    CsPowerSupplyState,CsThermalState,BiosListOfLanguages,
+    BiosManufacturer,BiosName,BiosOtherTargetOS,BiosReleaseDate,
     CsManufacturer,CsModel,CsDNSHostName,BiosSeralNumber,CsName,OsInstallDate,
     WindowsInstallDateFromRegistry,CsNetworkAdapters
 
