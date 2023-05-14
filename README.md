@@ -57,6 +57,7 @@ Get-WmiObject win32_process | select CommandLine,ProcessID
 
 #Get-WmiObject -Class Win32_Service
 Get-CimInstance -ClassName Win32_Service
+Get-CimInstance -ClassName Win32_Service | Select Name,DisplayName,Status,State,StartMode,ServiceType,Caption,Description,PathName
 
 Get-WmiObject -Class Win32_Process
 
