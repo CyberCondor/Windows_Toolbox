@@ -63,7 +63,11 @@ Get-WmiObject -Class Win32_Process
 
 Get-WmiObject -Namespace "root/default" -List | fl
 
-Get-CimInstance -ClassName Win32_Service | Select-Object -Property Status,Name,DisplayName
+Get-NetTCPConnection
+Get-PSDrive
+
+Get-NetUDPEndpoint -LocalPort 5353 | Select-Object LocalAddress,LocalPort,OwningProcess,@{ Name="ProcessName"; Expression={((Get-Process -Id $_.OwningProcess).Name )} }
+
 Get-CimInstance -ClassName Win32_Desktop -Property *
 Get-CimInstance -ClassName Win32_BIOS -Property *
 Get-CimInstance -ClassName Win32_Processor -Property *
@@ -75,7 +79,20 @@ Get-CimInstance -ClassName Win32_LogonSession
 Get-CimInstance -ClassName Win32_LocalTime
 Get-CimInstance -ClassName Win32_LogicalDisk
 Get-CimInstance -ClassName Win32_DiskDrive | where{$_.InterfaceType -eq 'USB'}
-Get-CimInstance -ClassName Win32_DiskDrive 
+Get-CimInstance -ClassName Win32_DiskDrive
+
+Get-AppxPackage -AllUsers -Name Microsoft.MSPaint | Remove-AppxPackage -AllUsers
+Get-AppxPackage -AllUsers -Name Microsoft.HEVCVideoExtension* | Remove-AppxPackage -AllUsers
+
+wmic product where name="Google Chrome" call uninstall /nointeractive
+
+$app = Get-WmiObject -Class Win32_Product -Filter "Name = '<PROGRAM NAME HERE>'"
+$app.Uninstall()
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c "$($Results = Get-WmiObject win32_process | select ProcessID,CommandLine | where{($_.CommandLine -like '*chrome remote*') -and ($_.CommandLine -notlike '*WindowsPowerShell*')}; foreach($Result in $Results.ProcessID){taskkill /F /PID $Result})"
+
+Get-ADDefaultDomainPasswordPolicy
+
 ```
 
 #
