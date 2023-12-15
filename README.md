@@ -1,7 +1,7 @@
-# WindowsHostEnumeration_Toolbox
+# Windows_Toolbox
 
 On Windows and don't know what's up with the hardware and software tied to it?<br>
-This repo holds a relatively small list of PowerShell commands for enumerating the host.
+This repo holds a relatively small list of PowerShell and CMD commands for enumerating the host.
 
 #
 ---
