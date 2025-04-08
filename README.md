@@ -8,7 +8,14 @@ This repo holds a relatively small list of PowerShell and CMD commands for enume
 #
 
 ```PowerShell
-hostname
+netstat -naob
+netstat -f
+
+tasklist /m /fi "pid eq [PID]"
+
+wmic process where processid=[PID] get commandline
+
+wmic process get name,parentprocessid,processid | select-string [PID]
 
 Get-ComputerInfo | select TimeZone,
     OsLocalDateTime,OsLastBootUpTime,OsUptime,
